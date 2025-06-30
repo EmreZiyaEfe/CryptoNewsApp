@@ -1,0 +1,162 @@
+﻿@* @model CryptoNewsApp.Web.Areas.User.Models.Vms.UserProfileVM *@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<CryptoNewsApp.Core.Entities.ApplicationUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<section id="profile" class="dashboard-content mb-4">
+    <h2 class="h4 mb-4">Profile Information</h2>
+    <form action="/User/Profile/Edit" method="post">
+        <input type="hidden" name="Id" value="@user.Id" />
+
+        <!-- Profile Picture Upload -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="profile-picture-container text-center">
+                    <div class="profile-picture-wrapper mb-3">
+                        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="rounded-circle img-thumbnail" id="profilePicture" style="width: 150px; height: 150px; object-fit: cover;">
+                    </div>
+                    <div class="profile-picture-actions">
+                        <label for="profilePictureUpload" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-camera me-2"></i>Change Photo
+                        </label>
+                        <input type="file" class="d-none" id="profilePictureUpload" accept="image/*">
+                        <button type="button" class="btn btn-outline-danger btn-sm" id="removeProfilePicture">
+                            <i class="fas fa-trash me-2"></i>Remove
+                        </button>
+                    </div>
+                    <small class="text-muted d-block mt-2">JPG, PNG or GIF (Max. 2MB)</small>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input name="FullName" type="text" class="form-control" id="fullName" value="@user.FullName.ToUpper()">
+                    </div>
+                    @* <div class="col-md-6">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" value="@user.FullName">
+                    </div> *@
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="Email" type="email" class="form-control" id="email" value="@user.Email" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Bio</label>
+                    <textarea class="form-control" id="bio" rows="3">Cryptocurrency enthusiast and blockchain technology researcher.</textarea>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</section>
+
+<!-- Comments Section -->
+<section id="comments" class="dashboard-content mb-4">
+    <h2 class="h4 mb-4">My Comments</h2>
+    <div class="comment-card p-3">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+                <h3 class="h6 mb-1">Bitcoin Surges Past $50,000</h3>
+                <p class="text-muted small mb-0">Posted on March 15, 2024</p>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <p class="mb-0">Great analysis! The market sentiment seems to be shifting positively.</p>
+    </div>
+    <div class="comment-card p-3">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+                <h3 class="h6 mb-1">Ethereum 2.0 Upgrade Details</h3>
+                <p class="text-muted small mb-0">Posted on March 14, 2024</p>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+        <p class="mb-0">Looking forward to seeing how this upgrade impacts gas fees.</p>
+    </div>
+</section>
+
+<!-- Saved Articles Section -->
+<section id="saved" class="dashboard-content mb-4">
+    <h2 class="h4 mb-4"><i class="fas fa-bookmark me-2"></i>Saved Articles</h2>
+    <ul class="list-group">
+        <!-- Example Saved Article 1 -->
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="badge bg-primary me-2">Bitcoin</span>
+                <a href="news-detail.html" class="text-decoration-none">Bitcoin Surges Past $50,000</a>
+                <div class="small text-muted">by Alice Smith</div>
+            </div>
+            <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times me-1"></i>Remove</button>
+        </li>
+        <!-- Example Saved Article 2 -->
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <span class="badge bg-info me-2">Ethereum</span>
+                <a href="news-detail.html" class="text-decoration-none">Ethereum 2.0 Upgrade: What to Expect</a>
+                <div class="small text-muted">by John Doe</div>
+            </div>
+            <button class="btn btn-sm btn-outline-danger"><i class="fas fa-times me-1"></i>Remove</button>
+        </li>
+    </ul>
+</section>
+
+<!-- Security Section -->
+<section id="security" class="dashboard-content">
+    <h2 class="h4 mb-4">Change Password</h2>
+    <form action="/User/Profile/ChangePassword" method="post">
+        <div class="mb-3">
+            <label for="currentPassword" class="form-label">Current Password</label>
+            <input name="CurrentPassword" type="password" class="form-control" id="currentPassword">
+        </div>
+        <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input name="NewPassword" type="password" class="form-control" id="newPassword">
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input name="ConfirmPassword" type="password" class="form-control" id="confirmPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Password</button>
+    </form>
+</section>

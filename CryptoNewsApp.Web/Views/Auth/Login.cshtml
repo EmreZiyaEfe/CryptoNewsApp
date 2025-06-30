@@ -1,0 +1,86 @@
+﻿@model CryptoNewsApp.Web.ViewModels.LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <h1 class="h3 text-center mb-4">Welcome Back</h1>
+
+                    <form asp-controller="Auth" asp-action="Login" class="needs-validation" novalidate>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input asp-for="Email" type="email" class="form-control" required
+                                       placeholder="Enter your email" aria-label="Email Address">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input asp-for="Password" type="password" class="form-control" required
+                                       placeholder="Enter your password" aria-label="Password">
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <div class="invalid-feedback">
+                                    Please enter your password.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Remember me
+                                </label>
+                            </div>
+                            <a href="#" class="text-decoration-none small">Forgot password?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                        </div>
+                    </form>
+
+                    <!-- Social Login -->
+                    <div class="mt-4">
+                        <p class="text-center text-muted mb-3">Or login with</p>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-outline-dark">
+                                <i class="fab fa-google me-2"></i> Continue with Google
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <i class="fab fa-github me-2"></i> Continue with GitHub
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Register Link -->
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Don't have an account? <a asp-controller="Auth" asp-action="Register" class="text-decoration-none">Register here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

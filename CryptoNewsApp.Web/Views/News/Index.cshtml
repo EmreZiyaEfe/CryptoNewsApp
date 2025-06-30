@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CryptoNewsApp.Core.Entities.News>
+
+<h2>Son Haberler</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Kategori</th>
+            <th>Tarih</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@news.Title</td>
+                <td>@news.Category?.Name</td>
+                <td>@news.PublishDate.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@news.Id" class="btn btn-info btn-sm">Detay</a>
+                    <a asp-action="Edit" asp-route-id="@news.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@news.Id" class="btn btn-danger btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary mt-3">Yeni Haber Ekle</a>

@@ -1,0 +1,150 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Settings</h1>
+    </div>
+
+    <!-- General Settings -->
+    <div class="card settings-card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">General Settings</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="siteName" class="form-label">Site Name</label>
+                        <input type="text" class="form-control" id="siteName" value="CryptoNews">
+                        <div class="form-text">The name of your website</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="siteDescription" class="form-label">Site Description</label>
+                        <input type="text" class="form-control" id="siteDescription" value="Your trusted source for cryptocurrency news">
+                        <div class="form-text">A brief description of your website</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="timezone" class="form-label">Timezone</label>
+                        <select class="form-select" id="timezone">
+                            <option value="UTC">UTC</option>
+                            <option value="EST">Eastern Time</option>
+                            <option value="PST">Pacific Time</option>
+                            <option value="GMT">GMT</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dateFormat" class="form-label">Date Format</label>
+                        <select class="form-select" id="dateFormat">
+                            <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                            <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                            <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SEO Settings -->
+    <div class="card settings-card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">SEO Settings</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="metaTitle" class="form-label">Default Meta Title</label>
+                    <input type="text" class="form-control" id="metaTitle" value="CryptoNews - Latest Cryptocurrency News and Updates">
+                    <div class="form-text">The default title for your website pages</div>
+                </div>
+                <div class="mb-3">
+                    <label for="metaDescription" class="form-label">Default Meta Description</label>
+                    <textarea class="form-control" id="metaDescription" rows="3">Stay updated with the latest cryptocurrency news, market analysis, and blockchain technology updates.</textarea>
+                    <div class="form-text">The default description for your website pages</div>
+                </div>
+                <div class="mb-3">
+                    <label for="metaKeywords" class="form-label">Default Meta Keywords</label>
+                    <input type="text" class="form-control" id="metaKeywords" value="cryptocurrency, crypto news, bitcoin, ethereum, blockchain">
+                    <div class="form-text">Comma-separated keywords for your website</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Social Media Settings -->
+    <div class="card settings-card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Social Media Settings</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="facebookUrl" class="form-label">Facebook URL</label>
+                        <input type="url" class="form-control" id="facebookUrl" value="https://facebook.com/cryptonews">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="twitterUrl" class="form-label">Twitter URL</label>
+                        <input type="url" class="form-control" id="twitterUrl" value="https://twitter.com/cryptonews">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="instagramUrl" class="form-label">Instagram URL</label>
+                        <input type="url" class="form-control" id="instagramUrl" value="https://instagram.com/cryptonews">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="linkedinUrl" class="form-label">LinkedIn URL</label>
+                        <input type="url" class="form-control" id="linkedinUrl" value="https://linkedin.com/company/cryptonews">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Email Settings -->
+    <div class="card settings-card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Email Settings</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="smtpHost" class="form-label">SMTP Host</label>
+                        <input type="text" class="form-control" id="smtpHost" value="smtp.gmail.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="smtpPort" class="form-label">SMTP Port</label>
+                        <input type="number" class="form-control" id="smtpPort" value="587">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="smtpUsername" class="form-label">SMTP Username</label>
+                        <input type="email" class="form-control" id="smtpUsername" value="noreply@cryptonews.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="smtpPassword" class="form-label">SMTP Password</label>
+                        <input type="password" class="form-control" id="smtpPassword" value="********">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="fromEmail" class="form-label">From Email</label>
+                    <input type="email" class="form-control" id="fromEmail" value="noreply@cryptonews.com">
+                    <div class="form-text">The email address that will be used to send emails</div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="d-flex justify-content-end mb-4">
+        <button type="button" class="btn btn-primary">
+            <i class="fas fa-save me-2"></i>Save Changes
+        </button>
+    </div>

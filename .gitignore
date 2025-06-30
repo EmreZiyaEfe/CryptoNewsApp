@@ -1,0 +1,61 @@
+# ----------------------
+# 💡 ASP.NET Core .gitignore
+# ----------------------
+
+# 🔐 AppSettings - HASSAS DOSYALAR
+appsettings.json
+appsettings.*.json
+secrets.json
+
+# 🏗️ Build klasörleri
+bin/
+obj/
+out/
+
+# 🛠️ Visual Studio ayar dosyaları
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 🧠 ReSharper / Rider
+.idea/
+*.sln.iml
+
+# 🧪 Test sonuçları
+TestResults/
+*.trx
+
+# 🔑 Sertifikalar
+*.pfx
+*.p12
+*.cer
+*.key
+*.crt
+
+# 📦 Paketler
+*.nupkg
+packages/
+.nuget/
+
+# 📄 Log dosyaları
+*.log
+
+# 🗑️ Yedek ve temp dosyalar
+*.bak
+*.tmp
+*.old
+
+# 🧰 Config cache
+*.vspscc
+*.vssscc
+*.dbmdl
+
+# 📱 Publish dosyaları
+publish/
+wwwroot/
+
+# 📁 SQLite dosyaları (kullanıyorsan)
+*.db
+*.sqlite
