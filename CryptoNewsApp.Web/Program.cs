@@ -96,6 +96,11 @@ namespace CryptoNewsApp.Web
                     pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
+                    name: "author",
+                    areaName: "Author",
+                    pattern: "Author/{controller=Dashboard}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
                     name: "user",
                     areaName: "User",
                     pattern: "User/{controller=Dashboard}/{action=Index}/{id?}");

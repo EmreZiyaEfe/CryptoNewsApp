@@ -52,20 +52,62 @@
                     @if(User.Identity.IsAuthenticated)
                     {
                         var user = await UserManager.GetUserAsync(User);
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                                    <img src="https://via.placeholder.com/32" alt="@user.FullName.ToLower()" class="rounded-circle me-2">
-                                    <span>@user.FullName.ToUpper()</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="/User/Profile/Index"><i class="fas fa-user me-2"></i>Profile</a></li>
-                                   @*  <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                                    <li><hr class="dropdown-divider"></li> *@
-                                    <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        var role = await UserManager.GetRolesAsync(user);
+
+                        @if (role.Contains("Admin"))
+                        {
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                        <img src="https://via.placeholder.com/32" alt="@user.FullName.ToLower()" class="rounded-circle me-2">
+                                        <span>@user.FullName.ToUpper()</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="/Admin/Dashboard/Index"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                         @* <li><a class="dropdown-item" href="#"><i class="fas fa-pen-nib me-2"></i>Write</a></li>
+                                <li><hr class="dropdown-divider"></li> *@
+                                        <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+
+                        else if (role.Contains("Author")) {
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                        <img src="https://via.placeholder.com/32" alt="@user.FullName.ToLower()" class="rounded-circle me-2">
+                                        <span>@user.FullName.ToUpper()</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="/Author/AuthorProfile/Index"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-pen-nib me-2"></i>Write Article</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                        <img src="https://via.placeholder.com/32" alt="@user.FullName.ToLower()" class="rounded-circle me-2">
+                                        <span>@user.FullName.ToUpper()</span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="/User/Profile/Index"><i class="fas fa-user me-2"></i>Profile</a></li>
+                                        @*  <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li> *@
+                                        <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+
+
+                        
                     }
                     
                         else
